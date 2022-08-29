@@ -10,21 +10,22 @@ import { BotAddEditComponent } from './admin/components/bot/bot-add-edit/bot-add
 import { FaqListComponent } from './admin/components/faq/faq-list/faq-list.component';
 import { FaqAddEditComponent } from './admin/components/faq/faq-add-edit/faq-add-edit.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    SignupComponent,
-    BotListComponent,
-    BotAddEditComponent,
-    FaqListComponent,
-    FaqAddEditComponent
+ 
   ],
   imports: [
     BrowserModule,
+    NgbModule,
     AppRoutingModule,
-    NgbModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

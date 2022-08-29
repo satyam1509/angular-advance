@@ -1,23 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/components/login/login.component';
-import { SignupComponent } from './auth/components/signup/signup.component';
+import { AfterLoginGuard } from './shared/guards/after-login.guard';
+import { BeforeLoginGuard } from './shared/guards/before-login.guard';
 
 const routes: Routes = [
   {
-    component: LoginComponent,
-    path: 'login',
+    path: "auth",
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule), 
+    canActivate:[BeforeLoginGuard]
   },
+ 
   {
-    component: SignupComponent,
-    path: 'signup',
+    path: "admin",
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), 
+    canActivate:[AfterLoginGuard]
   },
+
   {
-    path:'',
-    redirectTo:'/login',
-    pathMatch:'full'
-  },
-  
+    path:"**",
+    component:LoginComponent
+  }
+
 ];
 
 @NgModule({

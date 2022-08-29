@@ -12,4 +12,5 @@ export class FaqAddEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }
