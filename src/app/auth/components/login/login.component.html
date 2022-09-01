@@ -30,14 +30,14 @@
                 <div class="form-outline mb-4">
                   <span class="text-danger" *ngIf="loginform.controls.email.errors && loginform.controls.email.errors['required']">*required</span>
                   <input type="email" id="form1Example1" class="form-control" formControlName="email"/>
-                  <label class="form-label" for="form1Example1">Email address</label>
+                  <label class="form-label" for="form1Example1">{{'login.username.label' | translate}}</label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
                   <span class="text-danger" *ngIf="loginform.controls.password.errors && loginform.controls.password.errors['required']">*required</span>
                   <input type="text" id="form1Example2" class="form-control" formControlName="password" />
-                  <label class="form-label" for="form1Example2">Password</label>
+                  <label class="form-label" for="form1Example2">{{'login.password.label' | translate}}</label>
                 </div>
 
                 <!-- 2 column grid layout for inline styling -->
@@ -54,11 +54,15 @@
                   </strong>
                   </div>
                 </div>
-
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                
-              </form>
+                <button type="submit" class="btn btn-primary btn-block">{{'login.button.name' | translate}}</button>
+                 </form>              
+            </div>
+           <div class="btn-group">
+              <button type="button" class="btn btn-primary" (click)="useLanguage('ta')">  {{'login.button.ta' | translate}}  </button>
+              <button type="button" class="btn btn-primary" (click)="useLanguage('fr')">  {{'login.button.fr' | translate}}  </button>
+              <button type="button" class="btn btn-primary" (click)="useLanguage('zh')">  {{'login.button.zh' | translate}}  </button>
+              <button type="button" class="btn btn-primary" (click)="useLanguage('en')"> {{'login.button.en' | translate}} </button>
             </div>
           </div>
         </div>

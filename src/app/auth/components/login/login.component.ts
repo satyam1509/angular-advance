@@ -3,6 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth.service';
 
 
@@ -13,7 +14,16 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService:AuthService,private router:Router, private activatedroute: ActivatedRoute) {}
+  constructor(private authService:AuthService,private router:Router, private activatedroute: ActivatedRoute,private translate:TranslateService) {
+    translate.addLangs(['en']);
+    translate.setDefaultLang('en');
+    
+  }
+
+  useLanguage(language: string) {
+    this.translate.use(language);
+  }
+
 
   loginform = new FormGroup({
     email:new FormControl('',[Validators.required,Validators.email]),

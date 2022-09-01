@@ -20,10 +20,10 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of items">
-              <td>{{item.id}}</td>
-              <td>{{item.title}}</td>
+              <td *ngFor="let tbldata of uiData.tableUIdata">{{item[tbldata.colName]}}</td>
+              <!-- <td>{{item.title}}</td>
               <td>{{item.Content}}</td>
-              <td>{{item.date}}</td>
+              <td>{{item.date}}</td> -->
               <td>
               <a type="button" class="btn btn-primary" routerLink="">Edit</a>&nbsp;
               <a type="button" class="btn btn-danger"routerLink="">Delete</a>

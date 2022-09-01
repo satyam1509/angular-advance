@@ -12,7 +12,7 @@ export class AdminLayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  items:any[]=[];
+  @Input()items:any[]=[];
 
   @Input() uiData = { 
     headerTitle: "a",
@@ -23,13 +23,13 @@ export class AdminLayoutComponent implements OnInit {
         'colName':'id'
       },
       {
-        'title':'BOT Title',
+        'title':' Title',
         'colName':'title'
       },
       {
         'title':'Content',
         'colName':'content'
-      },
+      },  
       {
         'title':'Date',
         'colName':'date'
@@ -38,6 +38,8 @@ export class AdminLayoutComponent implements OnInit {
         'title':'Actions',
         'colName':'actions'
       },
+  
+      
     ]
 
   }

@@ -1,4 +1,6 @@
-import { Component, ContentChild, OnInit } from '@angular/core';
+import { Component, ContentChild, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BotService } from 'src/app/admin/services/bot.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
@@ -8,9 +10,10 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class BotListComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService,private botservice:BotService,private router:Router) { }
 
   ngOnInit(): void {
+    this.getBots();
   }
 
   uiData = { 
@@ -19,27 +22,28 @@ export class BotListComponent implements OnInit {
     tableUIdata:[
       {
         'title':'#',
-        'colName':'id'
+        'colName':'botId'
       },
       {
         'title':'BOT Title',
-        'colName':'title'
+        'colName':'name'
       },
       {
         'title':'Content',
-        'colName':'content'
+        'colName':'createdBy'
       },
       {
         'title':'Date',
-        'colName':'date'
+        'colName':'createdAt'
       },
       {
         'title':'Actions',
         'colName':'actions'
       },
+      
     ]
-
   }
+
    bots:any[]=[{
     id:1,
     title:"title1",
@@ -57,7 +61,49 @@ export class BotListComponent implements OnInit {
     title:"title3",
     content:"content3",
     date:new Date("2022-08-27")
+  },
+  {
+    id:4,
+    title:"title4",
+    content:"content4",
+    date:new Date("2022-08-28"),
+   
   },]
+
+  //   postBots(){
+  //     console.log("bot post from botlist component ");
+
+  //   let body={
+  //    id:"1",
+  //    title:"this is title 1",
+  //    content:"this is content 1",
+  //    date:"30-08-2022"
+  //   }
+  //  let b =JSON.stringify(body);
+
+  //   this.botservice.postBots(b).subscribe({
+      
+  //     next:(response)=>{
+  //       console.log(response);
+  //     },
+  //     error:(error)=>{
+  //       console.log(error);
+  //     }
+
+  //   });
+  //   }
+
+  
+getBots(){
+  this.botservice.getBots().subscribe({
+    next:(response:any)=>{ this.bots = response },
+    error:(error)=>{ 
+      alert("Session Timeout");
+      this.router.navigate(['/auth']  
+      )}
+  });
+
+}
 
   }
 

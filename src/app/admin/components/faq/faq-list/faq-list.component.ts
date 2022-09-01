@@ -39,6 +39,7 @@ export class FaqListComponent implements OnInit {
     ]
 
   }
+  
   faqs:any[]=[{
     id:1,
     title:"title1",
